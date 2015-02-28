@@ -11,8 +11,9 @@ export default Ember.Component.extend({
 
   activeClass: function() {
     Ember.debug(this.get('currentDifficulty'));
+    Ember.debug(this.get('targetDifficulty'));
 
-    if(this.get('currentDifficulty') == this.get('targetDifficulty')) {
+    if(this.get('currentDifficulty') === this.get('targetDifficulty')) {
       return 'active';
     }
   }.property('currentDifficulty', 'targetDifficulty'),

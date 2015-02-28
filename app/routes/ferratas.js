@@ -2,6 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-    return Ember.$.getJSON('/ferrats-optimized.json');
+    return Ember.$.getJSON('ferrats-optimized.json');
   }
 });

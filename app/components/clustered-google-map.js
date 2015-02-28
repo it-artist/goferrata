@@ -1,4 +1,4 @@
-/* globals MarkerClusterer  */
+/* globals MarkerClusterer, google */
 import Ember from 'ember';
 import GoogleMapComponent from './google-map';
 import helpers from 'ember-google-map/core/helpers';
@@ -36,8 +36,6 @@ export default GoogleMapComponent.extend({
 
   initMarkers: function() {
     Ember.debug('Markers rendered!');
-
-    var oldMarkers = this.clusterer.getMarkers();
     var newMarkers = [];
 
     var index;
@@ -47,23 +45,23 @@ export default GoogleMapComponent.extend({
 
       // filter difficulty
       if(this.difficulty) {
-        if(marker.difficulty != this.difficulty) continue;
+        if(marker.difficulty !== this.difficulty) {continue;}
       }
 
       if(this.heightMin) {
-        if(marker.targetMax < this.heightMin) continue;
+        if(marker.targetMax < this.heightMin) {continue;}
       }
 
       if(this.heightMax) {
-        if(marker.targetMax > this.heightMax) continue;
+        if(marker.targetMax > this.heightMax) {continue;}
       }
 
       if(this.durationMin) {
-        if(marker.duration < this.durationMin * 60) continue;
+        if(marker.duration < this.durationMin * 60) {continue;}
       }
 
       if(this.durationMax) {
-        if(marker.duration > this.durationMax * 60) continue;
+        if(marker.duration > this.durationMax * 60) {continue;}
       }
 
       var latlng = new google.maps.LatLng(marker.lat, marker.lng);
