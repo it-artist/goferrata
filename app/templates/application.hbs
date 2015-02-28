@@ -1,3 +1,48 @@
-<h2 id="title">Welcome to Ember.js</h2>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">GoFerrata.com</a>
+    </div>
+  </div>
+</nav>
 
-{{outlet}}
+<!-- Begin page content -->
+<div class="full-width-container clearfix">
+  {{outlet}}
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="difficulty">Difficulty:</label>
+        <div class="btn-group" role="group" aria-label="...">
+          {{#difficulty-button targetDifficulty=null currentDifficulty=difficulty}}All{{/difficulty-button}}
+          {{#difficulty-button targetDifficulty=1    currentDifficulty=difficulty}}1{{/difficulty-button}}
+          {{#difficulty-button targetDifficulty=2    currentDifficulty=difficulty}}2{{/difficulty-button}}
+          {{#difficulty-button targetDifficulty=3    currentDifficulty=difficulty}}3{{/difficulty-button}}
+          {{#difficulty-button targetDifficulty=4    currentDifficulty=difficulty}}4{{/difficulty-button}}
+          {{#difficulty-button targetDifficulty=5    currentDifficulty=difficulty}}5{{/difficulty-button}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="height">Height:</label>
+        {{input class="form-control" placeholder="from" value=heightMin}}
+        {{input class="form-control" placeholder="to" value=heightMax}} meters
+      </div>
+      <div class="form-group">
+        <label for="height">Duration:</label>
+        {{input class="form-control" placeholder="from" value=durationMin}}
+        {{input class="form-control" placeholder="to" value=durationMax}} hours
+      </div>
+
+    </form>
+  </div>
+</footer>
