@@ -51,6 +51,7 @@ export default GoogleMapComponent.extend({
 
     for (index = 0; index < this.markers.length; ++index) {
       var marker = this.markers[index];
+      var durationInHours = parseInt((marker["duration"] / 60)).toString() + ':' + parseInt((marker["duration"] % 60)).toString();
 
       // filter difficulty
       if(this.difficulty) {
@@ -81,6 +82,7 @@ export default GoogleMapComponent.extend({
       });
 
       var googleInfoWindow = new google.maps.InfoWindow({
+        pixelOffset: {width: 0, height: -40},
         content: "<div class='ferrata'>" +
           "<h4>" + marker.name + "</h4>"+
           "<dl class='dl-horizontal'>" +
@@ -90,7 +92,7 @@ export default GoogleMapComponent.extend({
           "<dt>Coords</dt><dd>" + marker.lat + " " + marker.lng + "</dd>" +
           "<dt>Begin</dt><dd>" + marker.begin + "</dd>" +
           "<dt>Target</dt><dd>" + marker.height + "m</dd>" +
-          "<dt>Duration</dt><dd>" + marker.duration + "m</dd>" +
+          "<dt>Duration</dt><dd>" + durationInHours + "h</dd>" +
           "<dt>Difficulty</dt><dd>("+marker.difficulty+")</dd>" +
           "<dt>Link</dt><dd><a target='_blank' href='http://klettersteig.de/klettersteig/"+ marker.link +"'>klettersteig.de</a></dd>" +
           "</dl>" +
