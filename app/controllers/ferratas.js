@@ -9,5 +9,10 @@ export default Ember.ArrayController.extend({
   durationMax: Ember.computed.alias('controllers.application.durationMax'),
   zoom: 8,
   centerLat: 46.87946,
-  centerLng: 13.317000000000007
+  centerLng: 13.317000000000007,
+  actions: {
+    windowOpened: function(slug) {
+      this.transitionTo('ferratas.show', slug);
+    }
+  }
 });

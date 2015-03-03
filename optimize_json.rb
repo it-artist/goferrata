@@ -9,6 +9,7 @@ original.each do |ferrata|
   ferrata.delete('difficultynum')
   ferrata["difficulty"] = ferrata.delete('difficultystr')
   ferrata["link"] = ferrata.delete('link').sub('http://klettersteig.de/klettersteig/', '')
+  ferrata["slug"] = ferrata["link"].gsub('/', '-').gsub('_', '-')
   optimized << ferrata
 end
 
