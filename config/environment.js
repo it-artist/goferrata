@@ -23,8 +23,7 @@ module.exports = function(environment) {
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      difficulties: ["B", "B/C", "C", "C/D", "D", "D/E", "E", "E/F", "F"]
     }
   };
 

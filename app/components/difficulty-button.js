@@ -10,9 +10,6 @@ export default Ember.Component.extend({
   classNameBindings: ['activeClass'],
 
   activeClass: function() {
-    Ember.debug(this.get('currentDifficulty'));
-    Ember.debug(this.get('targetDifficulty'));
-
     if(this.get('currentDifficulty') === this.get('targetDifficulty')) {
       return 'active';
     }

@@ -24,12 +24,10 @@
       <div class="form-group">
         <label for="difficulty">Difficulty:</label>
         <div class="btn-group" role="group" aria-label="...">
-          {{#difficulty-button                    currentDifficulty=difficulty}}All{{/difficulty-button}}
-          {{#difficulty-button targetDifficulty=1 currentDifficulty=difficulty}}1{{/difficulty-button}}
-          {{#difficulty-button targetDifficulty=2 currentDifficulty=difficulty}}2{{/difficulty-button}}
-          {{#difficulty-button targetDifficulty=3 currentDifficulty=difficulty}}3{{/difficulty-button}}
-          {{#difficulty-button targetDifficulty=4 currentDifficulty=difficulty}}4{{/difficulty-button}}
-          {{#difficulty-button targetDifficulty=5 currentDifficulty=difficulty}}5{{/difficulty-button}}
+          {{#difficulty-button currentDifficulty=difficulty}}All{{/difficulty-button}}
+          {{#each name in difficulties}}
+            {{#difficulty-button targetDifficulty=name currentDifficulty=difficulty}}{{name}}{{/difficulty-button}}
+          {{/each}}
         </div>
       </div>
       <div class="form-group">
