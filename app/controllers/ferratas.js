@@ -12,7 +12,7 @@ export default Ember.ArrayController.extend({
   centerLng: 13.317000000000007,
   actions: {
     windowOpened: function(slug) {
-      this.transitionTo('ferratas.show', slug);
+      this.transitionToRoute('ferratas.show', slug);
     }
   }
 });
