@@ -28,6 +28,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.googleAnalytics = { webPropertyId: 'UA-28860433-5' };
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -50,6 +51,7 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.baseURL =  '/goferrata';
     ENV.locationType = 'hash';
+    ENV.googleAnalytics = { webPropertyId: 'UA-60379606-1' };
   }
 
   return ENV;
