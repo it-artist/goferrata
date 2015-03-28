@@ -31,7 +31,7 @@ export default GoogleMapComponent.extend({
   markerViewClass: 'ferrata-map-marker',
   markerController: 'ferratas/marker',
   markerInfoWindowTemplateName: 'map/info-window',
-  type: 'satellite',
+  type: 'terrain',
 
   /**
    * Initialize the map
