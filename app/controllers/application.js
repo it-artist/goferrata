@@ -6,11 +6,17 @@ export default Ember.Controller.extend({
   heightMax: null,
   durationMin: null,
   durationMax: null,
-  difficulty: null,
   difficulties: config.APP.difficulties,
+  currentDifficulties: Ember.A(),
   actions: {
-    setDifficulty: function(difficulty) {
-      this.set('difficulty', difficulty);
+    triggerDifficulty: function(targetDifficulty) {
+      var difficulty = this.get('currentDifficulties');
+
+      if(difficulty.contains(targetDifficulty)) {
+        difficulty.removeObject(targetDifficulty);
+      } else {
+        difficulty.pushObject(targetDifficulty);
+      }
     }
   }
 });

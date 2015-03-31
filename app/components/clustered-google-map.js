@@ -22,7 +22,7 @@ function makeHandler(latLng, info, map, slug, context) {
 
 export default GoogleMapComponent.extend({
   action: 'windowOpened',
-  difficulty: null,
+  currentDifficulties: null,
   heightMin: null,
   heightMax: null,
   durationMin: null,
@@ -54,8 +54,8 @@ export default GoogleMapComponent.extend({
       var durationInHours = parseInt((marker["duration"] / 60)).toString() + ':' + parseInt((marker["duration"] % 60)).toString();
 
       // filter difficulty
-      if(this.difficulty) {
-        if(marker.difficulty !== this.difficulty) {continue;}
+      if(this.currentDifficulties.length > 0) {
+        if(!this.currentDifficulties.contains(marker.difficulty)) {continue;}
       }
 
       if(this.heightMin) {
@@ -110,5 +110,5 @@ export default GoogleMapComponent.extend({
 
     clusterer.clearMarkers();
     clusterer.addMarkers(newMarkers);
-  }.observes('difficulty', 'heightMin', 'heightMax', 'durationMin', 'durationMax')
+  }.observes('currentDifficulties.[]', 'heightMin', 'heightMax', 'durationMin', 'durationMax')
 });
