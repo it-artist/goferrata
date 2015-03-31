@@ -24,9 +24,8 @@
       <div class="form-group">
         <label for="difficulty">Difficulty:</label>
         <div class="btn-group" role="group" aria-label="...">
-          {{#difficulty-button currentDifficulty=difficulty}}All{{/difficulty-button}}
           {{#each name in difficulties}}
-            {{#difficulty-button targetDifficulty=name currentDifficulty=difficulty}}{{name}}{{/difficulty-button}}
+            {{#difficulty-button targetDifficulty=name currentDifficulties=currentDifficulties}}{{name}}{{/difficulty-button}}
           {{/each}}
         </div>
       </div>

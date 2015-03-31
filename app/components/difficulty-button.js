@@ -1,22 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  attributeBindings: ['currentDifficulty'],
-  action: 'setDifficulty',
-  currentDifficulty: null,
-  targetDifficulty: null,
+  action: 'triggerDifficulty',
   tagName: 'button',
   classNames: ['btn', 'btn-default'],
-  classNameBindings: ['activeClass'],
-
-  activeClass: function() {
-    if(this.get('currentDifficulty') === this.get('targetDifficulty')) {
-      return 'active';
-    }
-  }.property('currentDifficulty', 'targetDifficulty'),
-
+  classNameBindings: ['active'],
+  targetDifficulty: null,
+  active: false,
   click: function() {
     this.sendAction('action', this.get('targetDifficulty'));
     return false;
-  }
+  },
+  setActive: function() {
+    var difficulty = this.get('currentDifficulties');
+
+    this.set('active', difficulty.contains(this.get('targetDifficulty')));
+  }.observes('currentDifficulties.[]'),
 });
