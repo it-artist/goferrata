@@ -38,9 +38,20 @@ export default GoogleMapComponent.extend({
    */
   initGoogleMap: Ember.on('didInsertElement', function () {
     this._super();
+    this.googleObject.setOptions({
+      mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        position: google.maps.ControlPosition.TOP_LEFT,
+      },
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.LARGE,
+        position: google.maps.ControlPosition.TOP_LEFT
+      }
+    });
 
     var mcOptions = {gridSize: 50, maxZoom: 10};
     this.clusterer = new MarkerClusterer(this.googleObject, [], mcOptions);
+
     this.initMarkers();
   }),
 
