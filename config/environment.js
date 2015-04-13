@@ -6,6 +6,9 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    googleMap: {
+      libraries: ['places']
+    },
     contentSecurityPolicy: {
       'default-src': "*",
       'script-src': "*",

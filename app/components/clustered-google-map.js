@@ -39,7 +39,9 @@ export default GoogleMapComponent.extend({
    */
   initGoogleMap: Ember.on('didInsertElement', function () {
     this._super();
-    this.googleObject.setOptions({
+    var map = this.googleObject;
+
+    map.setOptions({
       mapTypeControlOptions: {
         style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
         position: google.maps.ControlPosition.TOP_LEFT,
@@ -51,7 +53,30 @@ export default GoogleMapComponent.extend({
     });
 
     var mcOptions = {gridSize: 50, maxZoom: 10};
-    this.clusterer = new MarkerClusterer(this.googleObject, [], mcOptions);
+
+    var input = document.getElementById('pac-input');
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo('bounds', this.googleObject);
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      var place = autocomplete.getPlace();
+      if (!place.geometry) {
+        return;
+      }
+      if (place.geometry.viewport) {
+        map.fitBounds(place.geometry.viewport);
+      } else {
+        map.setCenter(place.geometry.location);
+        map.setZoom(17);  // Why 17? Because it looks good.
+      }
+
+      if(activeInfo) {
+        activeInfo.close(map);
+      }
+    });
+
+    this.clusterer = new MarkerClusterer(map, [], mcOptions);
 
     this.initMarkers();
   }),
