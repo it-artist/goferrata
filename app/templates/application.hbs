@@ -23,6 +23,7 @@
   <div class="container">
     <form class="form-inline">
       <div class="form-group">
+        {{#geolocate-button latitude=centerLat longitude=centerLng}}Geolocate{{/geolocate-button}}
         <label for="difficulty">Difficulty:</label>
         <div class="btn-group" role="group" aria-label="...">
           {{#each name in difficulties}}
