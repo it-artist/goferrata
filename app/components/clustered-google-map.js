@@ -52,7 +52,7 @@ export default GoogleMapComponent.extend({
       }
     });
 
-    var mcOptions = {gridSize: 50, maxZoom: 10};
+    var mcOptions = {gridSize: 50, maxZoom: 10, imagePath: config.baseURL + 'static/m'};
 
     var input = document.getElementById('pac-input');
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
