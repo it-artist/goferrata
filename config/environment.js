@@ -52,7 +52,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.baseURL =  '/goferrata';
+    ENV.baseURL =  '/goferrata/';
     ENV.locationType = 'hash';
     ENV.googleAnalytics = { webPropertyId: 'UA-60379606-1' };
   }
