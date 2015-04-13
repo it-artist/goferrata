@@ -23,7 +23,7 @@ module.exports = function(environment) {
     },
 
     APP: {
-      difficulties: ["B", "B/C", "C", "C/D", "D", "D/E", "E", "E/F", "F"]
+      difficulties: ["A", "A/B", "B", "B/C", "C", "C/D", "D", "D/E", "E", "E/F", "F"]
     }
   };
 

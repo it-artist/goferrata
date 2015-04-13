@@ -1,6 +1,7 @@
 /* globals MarkerClusterer, google */
 import Ember from 'ember';
 import GoogleMapComponent from './google-map';
+import config from './../config/environment';
 
 var activeInfo = null;
 function makeHandler(latLng, info, map, slug, context) {
@@ -89,7 +90,8 @@ export default GoogleMapComponent.extend({
 
       var googleMarker = new google.maps.Marker({
         position: latLng,
-        title: marker.name + ' (' + marker.height + 'm)'
+        title: marker.name + ' (' + marker.height + 'm)',
+        icon: config.baseURL + this.getIconForDifficulty(marker.difficulty)
       });
 
       var googleInfoWindow = new google.maps.InfoWindow({
@@ -121,5 +123,16 @@ export default GoogleMapComponent.extend({
 
     clusterer.clearMarkers();
     clusterer.addMarkers(newMarkers);
-  }.observes('currentDifficulties.[]', 'heightMin', 'heightMax', 'durationMin', 'durationMax')
+  }.observes('currentDifficulties.[]', 'heightMin', 'heightMax', 'durationMin', 'durationMax'),
+  getIconForDifficulty: function(difficulty) {
+    if(['A', 'A/B'].contains(difficulty)) {
+      return 'pointer_green.png';
+    } else if(['B', 'B/C'].contains(difficulty)) {
+      return 'pointer_blue.png';
+    } else if(['C', 'C/D'].contains(difficulty)) {
+      return 'pointer_red.png';
+    } else {
+      return 'pointer_black.png';
+    }
+  }
 });
