@@ -8,9 +8,12 @@
 </nav>
 
 <!-- Begin page content -->
-<div class="full-width-container clearfix">
+<div class="content">
   {{outlet}}
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+  <div class="search">
+    <input id="search-input" class="search__input" type="text" placeholder="Search Box">
+  </div>
 </div>
 
 <footer class="footer">
@@ -27,13 +30,13 @@
       </div>
       <div class="footer--group">
         <label for="height">Height:</label>
-        {{input class="form-control" placeholder="from" value=heightMin}}
-        {{input class="form-control" placeholder="to" value=heightMax}} meters
+        {{input class="footer--input" placeholder="from" value=heightMin}}
+        {{input class="footer--input" placeholder="to" value=heightMax}} meters
       </div>
       <div class="footer--group">
         <label for="height">Duration:</label>
-        {{input class="form-control" placeholder="from" value=durationMin}}
-        {{input class="form-control" placeholder="to" value=durationMax}} hours
+        {{input class="footer--input" placeholder="from" value=durationMin}}
+        {{input class="footer--input" placeholder="to" value=durationMax}} hours
       </div>
 
     </form>
