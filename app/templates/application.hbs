@@ -1,7 +1,7 @@
 <!-- Fixed navbar -->
 <nav class="header">
-  <div class="header--container">
-    <div class="header--logo">
+  <div class="header__container">
+    <div class="header__logo">
       <a href="/"><img src="/logo.png" title="GoFerrata.com" /></a>
     </div>
   </div>
@@ -17,26 +17,26 @@
 </div>
 
 <footer class="footer">
-  <div class="footer--container">
-    <form class="footer--form">
-      <div class="footer--group">
+  <div class="footer__container">
+    <form class="footer__form">
+      <div class="footer__group">
         {{#geolocate-button latitude=centerLat longitude=centerLng}}Geolocate{{/geolocate-button}}
         <label for="difficulty">Difficulty:</label>
-        <div class="footer--difficulties">
+        <div class="footer__difficulties">
           {{#each name in difficulties}}
             {{#difficulty-button targetDifficulty=name currentDifficulties=currentDifficulties}}{{name}}{{/difficulty-button}}
           {{/each}}
         </div>
       </div>
-      <div class="footer--group">
+      <div class="footer__group">
         <label for="height">Height:</label>
-        {{input class="footer--input" placeholder="from" value=heightMin}}
-        {{input class="footer--input" placeholder="to" value=heightMax}} meters
+        {{input class="footer__input" placeholder="from" value=heightMin}}
+        {{input class="footer__input" placeholder="to" value=heightMax}} meters
       </div>
-      <div class="footer--group">
+      <div class="footervgroup">
         <label for="height">Duration:</label>
-        {{input class="footer--input" placeholder="from" value=durationMin}}
-        {{input class="footer--input" placeholder="to" value=durationMax}} hours
+        {{input class="footer__input" placeholder="from" value=durationMin}}
+        {{input class="footer__input" placeholder="to" value=durationMax}} hours
       </div>
 
     </form>

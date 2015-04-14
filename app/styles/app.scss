@@ -22,7 +22,7 @@ body {
 /* Layout
 -------------------------------------------------- */
 .virtual {
-  &--container {
+  &__container {
     @extend .container;
 
     padding-right: 15px;
@@ -37,11 +37,11 @@ body {
 
   border-bottom: 1px solid $border-color;
 
-  &--container {
+  &__container {
     padding-left: 15px;
   }
 
-  &--logo {
+  &__logo {
     @extend .navbar-header;
 
     margin-top: 10px;
@@ -57,30 +57,30 @@ body {
   border-top: 1px solid $border-color;
   text-align: center;
 
-  &--form {
+  &__form {
     @extend .form-inline;
 
     margin-top: 15px;
   }
 
-  &--group {
+  &__group {
     @extend .form-group;
 
     margin-right: 10px;
   }
 
-  &--input {
+  &__input {
     @extend .form-control;
 
     width: 60px!important;
   }
 
-  &--difficulties {
+  &__difficulties {
     @extend .btn-group;
   }
 
-  &--container {
-    @extend .virtual--container;
+  &__container {
+    @extend .virtual__container;
   }
 
 }
