@@ -19,24 +19,24 @@
   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 </div>
 
-<footer class="footer">
-  <div class="container">
-    <form class="form-inline">
-      <div class="form-group">
+<footer class="app-footer">
+  <div>
+    <form class="app-footer--form">
+      <div class="app-footer--group">
         {{#geolocate-button latitude=centerLat longitude=centerLng}}Geolocate{{/geolocate-button}}
         <label for="difficulty">Difficulty:</label>
-        <div class="btn-group" role="group" aria-label="...">
+        <div class="app-footer--difficulties">
           {{#each name in difficulties}}
             {{#difficulty-button targetDifficulty=name currentDifficulties=currentDifficulties}}{{name}}{{/difficulty-button}}
           {{/each}}
         </div>
       </div>
-      <div class="form-group">
+      <div class="app-footer--group">
         <label for="height">Height:</label>
         {{input class="form-control" placeholder="from" value=heightMin}}
         {{input class="form-control" placeholder="to" value=heightMax}} meters
       </div>
-      <div class="form-group">
+      <div class="app-footer--group">
         <label for="height">Duration:</label>
         {{input class="form-control" placeholder="from" value=durationMin}}
         {{input class="form-control" placeholder="to" value=durationMax}} hours
