@@ -1,14 +1,8 @@
 <!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">GoFerrata.com</a>
+<nav class="header">
+  <div class="header--container">
+    <div class="header--logo">
+      <a href="/"><img src="/logo.png" title="GoFerrata.com" /></a>
     </div>
   </div>
 </nav>
@@ -19,24 +13,24 @@
   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 </div>
 
-<footer class="app-footer">
-  <div>
-    <form class="app-footer--form">
-      <div class="app-footer--group">
+<footer class="footer">
+  <div class="footer--container">
+    <form class="footer--form">
+      <div class="footer--group">
         {{#geolocate-button latitude=centerLat longitude=centerLng}}Geolocate{{/geolocate-button}}
         <label for="difficulty">Difficulty:</label>
-        <div class="app-footer--difficulties">
+        <div class="footer--difficulties">
           {{#each name in difficulties}}
             {{#difficulty-button targetDifficulty=name currentDifficulties=currentDifficulties}}{{name}}{{/difficulty-button}}
           {{/each}}
         </div>
       </div>
-      <div class="app-footer--group">
+      <div class="footer--group">
         <label for="height">Height:</label>
         {{input class="form-control" placeholder="from" value=heightMin}}
         {{input class="form-control" placeholder="to" value=heightMax}} meters
       </div>
-      <div class="app-footer--group">
+      <div class="footer--group">
         <label for="height">Duration:</label>
         {{input class="form-control" placeholder="from" value=durationMin}}
         {{input class="form-control" placeholder="to" value=durationMax}} hours

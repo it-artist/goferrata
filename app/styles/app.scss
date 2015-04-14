@@ -19,16 +19,37 @@ body {
 
 /* Layout
 -------------------------------------------------- */
-.app-footer {
+.virtual {
+  &--container {
+    @extend .container;
+
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+.header {
+  @extend .navbar;
+  @extend .navbar-default;
+  @extend .navbar-fixed-top;
+
+  &--container {
+    padding-left: 15px;
+  }
+
+  &--logo {
+    @extend .navbar-header;
+
+    margin-top: 10px;
+  }
+}
+
+.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: $app-footer-height;
   background-color: #f5f5f5;
-
-  > div {
-    @extend .container;
-  }
 
   &--form {
     @extend .form-inline;
@@ -36,35 +57,16 @@ body {
 
   &--group {
     @extend .form-group;
-
   }
 
   &--difficulties {
     @extend .btn-group;
   }
 
-}
+  &--container {
+    @extend .virtual--container;
+  }
 
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-
-.container {
-  font-weight: 200;
-}
-.navbar-brand {
-  font-size: 24px;
-}
-body > .container {
-  padding: 60px 15px 0;
-}
-.container .text-muted {
-  margin: 20px 0;
-}
-
-.footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
 }
 
 code {
