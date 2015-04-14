@@ -2,9 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   action: 'centerMap',
-  classNames: ['btn', 'btn-default'],
+  classNames: ['geolocate-button'],
   tagName: 'button',
-  classNameBindings: ['hidden'],
+  classNameBindings: ['hidden:geolocate-button--hidden'],
   hidden: true,
   latitude: null,
   longitude: null,

@@ -3,8 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   action: 'triggerDifficulty',
   tagName: 'button',
-  classNames: ['btn', 'btn-default'],
-  classNameBindings: ['active'],
+  classNames: ['difficulty-button'],
+  classNameBindings: ['active:difficulty-button--active'],
   targetDifficulty: null,
   active: false,
   click: function() {

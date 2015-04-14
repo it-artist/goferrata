@@ -85,6 +85,24 @@ body {
 
 }
 
+.difficulty-button {
+  @extend .btn;
+  @extend .btn-default;
+
+  &--active {
+    @extend .active;
+  }
+}
+
+.geolocate-button {
+  @extend .btn;
+  @extend .btn-default;
+
+  &--hidden {
+    @extend .hidden;
+  }
+}
+
 .content {
   @extend .clearfix;
 
