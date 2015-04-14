@@ -21,7 +21,7 @@ export default Ember.Component.extend({
       }, function() {
         console.info('Geolocation was denied in the browser.');
       });
-    };
+    }
     return false;
   },
 });
