@@ -14,6 +14,7 @@
     "qunit": "~1.17.1",
     "bootstrap": "~3.3",
     "ember-addons.bs_for_ember": "~0.7.0",
-    "bootstrap-sass-official": "~3.3.3"
+    "bootstrap-sass-official": "~3.3.3",
+    "nouislider": "~7.0.10"
   }
 }

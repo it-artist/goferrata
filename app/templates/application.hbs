@@ -30,13 +30,11 @@
       </div>
       <div class="footer__group">
         <label for="height">Height:</label>
-        {{input class="footer__input" placeholder="from" value=heightMin}}
-        {{input class="footer__input" placeholder="to" value=heightMax}} meters
+        {{range-slider max=8000 start=startHeight change="changedHeight"}}
       </div>
       <div class="footer__group">
         <label for="height">Duration:</label>
-        {{input class="footer__input" placeholder="from" value=durationMin}}
-        {{input class="footer__input" placeholder="to" value=durationMax}} hours
+        {{range-slider max=1000 start=startDuration change="changedDuration"}}
       </div>
 
     </form>
