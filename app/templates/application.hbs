@@ -4,6 +4,10 @@
     <div class="header__logo">
       <a href="/"><img src="logo.png" title="GoFerrata.com" /></a>
     </div>
+
+    <div class="header__geolocate">
+      {{#geolocate-button latitude=centerLat longitude=centerLng}}Show me nearby ferratas &raquo;{{/geolocate-button}}
+    </div>
   </div>
 </nav>
 
@@ -20,7 +24,6 @@
   <div class="footer__container">
     <form class="footer__form">
       <div class="footer__group">
-        {{#geolocate-button latitude=centerLat longitude=centerLng}}Geolocate{{/geolocate-button}}
         <label for="difficulty">Difficulty:</label>
         <div class="footer__difficulties">
           {{#each name in difficulties}}

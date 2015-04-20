@@ -4,6 +4,7 @@
 -------------------------------------------------- */
 $footer-height: 60px;
 $border-color: rgba(189, 189, 189, 0.86);
+$hover-color: #009900;
 
 /* General
 -------------------------------------------------- */
@@ -45,6 +46,29 @@ body {
     @extend .navbar-header;
 
     margin-top: 10px;
+  }
+
+  &__geolocate {
+    @extend .pull-right;
+
+    margin-top: 13px;
+    margin-right: 15px;
+
+    .geolocate-button {
+      border: 0;
+      background: none;
+      font-weight: bold;
+
+      &:hover {
+        background: none;
+        color: $hover-color;
+      }
+
+      &--hidden {
+        @extend .hidden;
+      }
+    }
+
   }
 }
 
@@ -91,15 +115,6 @@ body {
 
   &--active {
     @extend .active;
-  }
-}
-
-.geolocate-button {
-  @extend .btn;
-  @extend .btn-default;
-
-  &--hidden {
-    @extend .hidden;
   }
 }
 
