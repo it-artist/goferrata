@@ -6,7 +6,7 @@
     </div>
 
     <div class="header__geolocate">
-      {{#geolocate-button latitude=centerLat longitude=centerLng}}Show me nearby ferratas &raquo;{{/geolocate-button}}
+      {{#geolocate-button latitude=centerLat longitude=centerLng}}Zoom to nearby ferratas &raquo;{{/geolocate-button}}
     </div>
   </div>
 </nav>
@@ -23,8 +23,7 @@
 <footer class="footer">
   <div class="footer__container">
     <form class="footer__form">
-      <div class="footer__group">
-        <label for="difficulty">Difficulty:</label>
+      <div class="footer__group footer__group--wide">
         <div class="footer__difficulties">
           {{#each name in difficulties}}
             {{#difficulty-button targetDifficulty=name currentDifficulties=currentDifficulties}}{{name}}{{/difficulty-button}}
@@ -32,11 +31,9 @@
         </div>
       </div>
       <div class="footer__group">
-        <label for="height">Height:</label>
-        {{range-slider max=8000 start=startHeight change="changedHeight"}}
+        {{range-slider max=8000 start=startHeight connect=true change="changedHeight"}}
       </div>
       <div class="footer__group">
-        <label for="height">Duration:</label>
         {{range-slider max=1000 start=startDuration change="changedDuration"}}
       </div>
 

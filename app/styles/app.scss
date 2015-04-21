@@ -5,6 +5,10 @@
 $footer-height: 60px;
 $border-color: rgba(189, 189, 189, 0.86);
 $hover-color: #009900;
+$pointer-green: #009900;
+$pointer-black: #000000;
+$pointer-blue: #0083d7;
+$pointer-red: #d40000;
 
 /* General
 -------------------------------------------------- */
@@ -88,9 +92,12 @@ body {
   }
 
   &__group {
-    @extend .form-group;
+    @extend .col-sm-3;
 
-    margin-right: 10px;
+    &--wide {
+      @extend .col-sm-6;
+    }
+
   }
 
   &__input {
@@ -113,8 +120,27 @@ body {
   @extend .btn;
   @extend .btn-default;
 
+  padding: 6px 10px;
+  font-weight: bold;
+
   &--active {
     @extend .active;
+  }
+
+  &.green {
+    color: $pointer-green;
+  }
+
+  &.red {
+    color: $pointer-red;
+  }
+
+  &.black {
+    color: $pointer-black;
+  }
+
+  &.blue {
+    color: $pointer-blue;
   }
 }
 

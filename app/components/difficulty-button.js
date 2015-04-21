@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   action: 'triggerDifficulty',
   tagName: 'button',
   classNames: ['difficulty-button'],
-  classNameBindings: ['active:difficulty-button--active'],
+  classNameBindings: ['active:difficulty-button--active', 'color'],
   targetDifficulty: null,
   active: false,
   click: function() {
@@ -16,4 +16,17 @@ export default Ember.Component.extend({
 
     this.set('active', difficulty.contains(this.get('targetDifficulty')));
   }.observes('currentDifficulties.[]'),
+
+  color: function() {
+    let difficulty = this.get('targetDifficulty');
+    if(['A', 'A/B'].contains(difficulty)) {
+      return 'green';
+    } else if(['B', 'B/C'].contains(difficulty)) {
+      return 'blue';
+    } else if(['C', 'C/D'].contains(difficulty)) {
+      return 'red';
+    } else {
+      return 'black';
+    }
+  }.property('targetDifficulty')
 });
