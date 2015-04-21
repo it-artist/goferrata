@@ -149,6 +149,7 @@ export default GoogleMapComponent.extend({
     clusterer.clearMarkers();
     clusterer.addMarkers(newMarkers);
   }.observes('currentDifficulties.[]', 'heightMin', 'heightMax', 'durationMin', 'durationMax'),
+
   getIconForDifficulty: function(difficulty) {
     if(['A', 'A/B'].contains(difficulty)) {
       return 'pointer_green.png';
