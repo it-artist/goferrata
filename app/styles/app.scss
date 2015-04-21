@@ -124,10 +124,11 @@ body {
   height: 100%;
 
   &__map {
-    margin-top: 50px;
-    width: 100%;
-    height: 100vh;
-    min-height: 100%;
+    position: absolute;
+    bottom: $footer-height;
+    top: 50px;
+    left: 0;
+    right: 0;
   }
 
   &__loader {

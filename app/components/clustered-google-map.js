@@ -41,23 +41,23 @@ export default GoogleMapComponent.extend({
     this._super();
     var map = this.googleObject;
 
+    var input = document.getElementById('search-input');
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.bindTo('bounds', map);
+
     map.setOptions({
       mapTypeControlOptions: {
         style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-        position: google.maps.ControlPosition.TOP_LEFT,
+        position: google.maps.ControlPosition.LEFT_BOTTOM,
       },
       zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.LARGE,
-        position: google.maps.ControlPosition.TOP_LEFT
+        style: google.maps.ZoomControlStyle.SMALL,
+        position: google.maps.ControlPosition.LEFT_CENTER
       }
     });
 
     var mcOptions = {gridSize: 50, maxZoom: 10, imagePath: config.baseURL + 'static/m'};
-
-    var input = document.getElementById('search-input');
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.bindTo('bounds', this.googleObject);
 
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
       var place = autocomplete.getPlace();
