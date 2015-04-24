@@ -27,5 +27,4 @@ export default RangeSlider.extend({
 
     this.$().noUiSlider_pips(pips_settings);
   }
-
 });
