@@ -78,16 +78,32 @@ body {
 
 .sidebar {
   width: 420px;
-
   position: fixed;
   top: 50px;
   right: -10px;
+
+  border-left: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.ferrata {
+  @extend .clearfix;
+  padding: 10px;
+  background: rgba(248,248,248, 0.95);
+
+  &__column {
+    @extend .col-xs-6;
+  }
+
+  &__header {
+    font-weight: bold;
+  }
 }
 
 .filter {
   @extend .clearfix;
   padding: 10px;
-  background: rgba(248,248,248, 0.8);
+  background: rgba(248,248,248, 0.95);
 
   &__form {
     @extend .form-inline;
@@ -201,19 +217,6 @@ body {
 
     &:focus {
       border-color: #4d90fe;
-    }
-  }
-}
-
-// .ferrata is to be removed soon
-.ferrata {
-  .dl-horizontal {
-    dt {
-      width: 60px;
-    }
-
-    dd {
-      margin-left: 100px;
     }
   }
 }
