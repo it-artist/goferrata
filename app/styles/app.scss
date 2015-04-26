@@ -19,7 +19,6 @@ html {
 }
 
 body {
-  overflow: hidden;
   height: 100%;
   padding-bottom: $footer-height;
 }
@@ -49,6 +48,7 @@ body {
   &__logo {
     @extend .navbar-header;
 
+    float: left;
     margin-top: 10px;
   }
 
@@ -72,7 +72,6 @@ body {
         @extend .hidden;
       }
     }
-
   }
 }
 
@@ -160,7 +159,7 @@ body {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: $footer-height;
@@ -223,6 +222,9 @@ body {
   }
 }
 
+/* External
+-------------------------------------------------- */
+
 .noUi-pips {
   position: relative;
   top: 20px;
@@ -254,12 +256,16 @@ body {
     width: 100%;
 
     position: static;
-    margin-top: 50%;
+    margin-top: 370px;
   }
 
   .content {
     &__map {
-      bottom: 50%;
+      bottom: 300px;
     }
+  }
+
+  .filter__difficulty-button {
+    width: 9%;
   }
 }
