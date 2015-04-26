@@ -4,6 +4,7 @@ import Ember from 'ember';
 export default Ember.ArrayController.extend({
   needs: ['application'],
   zoom: 8,
+  activeMarker: null,
   centerLat: Ember.computed.alias('controllers.application.centerLat'),
   centerLng: Ember.computed.alias('controllers.application.centerLng'),
   startHeight: [config.APP.heightRange.min, config.APP.heightRange.max],
@@ -19,7 +20,7 @@ export default Ember.ArrayController.extend({
   difficulties: config.APP.difficulties,
   currentDifficulties: Ember.A(),
   actions: {
-    windowOpened: function(ferrata) {
+    openDetail: function(ferrata) {
       this.transitionToRoute('ferratas.show', ferrata);
     },
     changedHeight: function(values) {

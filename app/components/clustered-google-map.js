@@ -4,7 +4,7 @@ import GoogleMapComponent from './google-map';
 import config from './../config/environment';
 
 export default GoogleMapComponent.extend({
-  action: 'windowOpened',
+  action: 'openDetail',
   activeMarker: null,
   currentDifficulties: null,
   heightMin: null,
@@ -130,16 +130,30 @@ export default GoogleMapComponent.extend({
     }
   },
 
+  stopPreviousMarkerAnimation: function() {
+    var active = this.get('activeMarker');
+    var previous = this.get('previousMarker');
+
+    if(active !== previous) {
+      this.set('previousMarker', active);
+      if(previous) {
+        previous.setAnimation(null);
+      }
+    }
+  }.observes('activeMarker'),
+
+  startActiveMarkerAnimation: function() {
+    var active = this.get('activeMarker');
+    if(active) {
+      active.setAnimation(google.maps.Animation.BOUNCE);
+    }
+  }.observes('activeMarker'),
+
   markerClickHandler: function(latLng, map, ferrata) {
     var self = this;
     return function() {
       map.panTo(latLng);
 
-      if(self.activeMarker) {
-        self.activeMarker.setAnimation(null);
-      }
-
-      ferrata.marker.setAnimation(google.maps.Animation.BOUNCE);
       self.set('activeMarker', ferrata.marker);
       self.sendAction('action', ferrata);
     };
