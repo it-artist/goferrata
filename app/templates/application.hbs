@@ -2,7 +2,7 @@
 <nav class="header">
   <div class="header__container">
     <div class="header__logo">
-      <a href="/"><img src="logo.png" title="GoFerrata.com" /></a>
+      {{#link-to 'ferratas.index'}}<img src="logo.png" title="GoFerrata.com" />{{/link-to}}
     </div>
 
     <div class="header__geolocate">
@@ -14,47 +14,6 @@
 <!-- Begin page content -->
 <div class="content">
   {{outlet}}
-
-  <div class="search">
-    <input id="search-input" class="search__input" type="text" placeholder="Search Box">
-  </div>
-
-  <div class="sidebar">
-    <div class="ferrata">
-      <h2>Feratka</h2>
-      <div class="ferrata__column">
-        <div class="ferrata__header">
-          Height
-        </div>
-        <div class="ferrata__value">
-          560m
-        </div>
-      </div>
-      <div class="ferrata__column">
-        <div class="ferrata__header">
-          Duration
-        </div>
-        <div class="ferrata__value">
-          2hours
-        </div>
-      </div>
-    </div>
-    <div class="filter">
-      <form class="filter__form">
-        <div class="filter__group filter__difficulties">
-          {{#each name in difficulties}}
-            {{#difficulty-button targetDifficulty=name currentDifficulties=currentDifficulties}}{{name}}{{/difficulty-button}}
-          {{/each}}
-        </div>
-        <div class="filter__group">
-          {{range-slider max=startHeightMax start=startHeight range=heightRange change="changedHeight"}}
-        </div>
-        <div class="filter__group">
-          {{range-slider max=startDurationMax start=startDuration range=durationRange change="changedDuration"}}
-        </div>
-      </form>
-    </div>
-  </div>
 </div>
 
 <footer class="footer">

@@ -3,20 +3,19 @@ import Ember from 'ember';
 import GoogleMapComponent from './google-map';
 import config from './../config/environment';
 
-var activeInfo = null;
-function makeHandler(latLng, info, map, slug, context) {
+var activeMarker = null;
+function makeHandler(latLng, map, ferrata, context) {
   return function() {
-    if(activeInfo) {
-      activeInfo.close(map);
+    map.panTo(latLng);
+
+    if(activeMarker) {
+      activeMarker.setAnimation(null);
     }
 
-    info.setPosition(latLng);
-    map.panTo(latLng);
-    info.open(map);
-    activeInfo = info;
-
+    ferrata.marker.setAnimation(google.maps.Animation.BOUNCE);
+    activeMarker = ferrata.marker;
     if(context) {
-      context.sendAction('action', slug);
+      context.sendAction('action', ferrata);
     }
   };
 }
@@ -70,10 +69,6 @@ export default GoogleMapComponent.extend({
         map.setCenter(place.geometry.location);
         map.setZoom(17);  // Why 17? Because it looks good.
       }
-
-      if(activeInfo) {
-        activeInfo.close(map);
-      }
     });
 
     this.clusterer = new MarkerClusterer(map, [], mcOptions);
@@ -86,64 +81,46 @@ export default GoogleMapComponent.extend({
     var clusterer = this.clusterer;
     var index;
 
-    for (index = 0; index < this.markers.length; ++index) {
-      var marker = this.markers[index];
-      var durationInHours = parseInt((marker["duration"] / 60)).toString() + ':' + parseInt((marker["duration"] % 60)).toString();
+    for (index = 0; index < this.ferratas.length; ++index) {
+      var ferrata = this.ferratas[index];
+      // var durationInHours = parseInt((marker["duration"] / 60)).toString() + ':' + parseInt((marker["duration"] % 60)).toString();
 
       // filter difficulty
       if(this.currentDifficulties.length > 0) {
-        if(!this.currentDifficulties.contains(marker.difficulty)) {continue;}
+        if(!this.currentDifficulties.contains(ferrata.difficulty)) {continue;}
       }
 
       if(this.heightMin) {
-        if(marker.height < this.heightMin) {continue;}
+        if(ferrata.height < this.heightMin) {continue;}
       }
 
       if(this.heightMax) {
-        if(marker.height > this.heightMax) {continue;}
+        if(ferrata.height > this.heightMax) {continue;}
       }
 
       if(this.durationMin) {
-        if(marker.duration < this.durationMin * 60) {continue;}
+        if(ferrata.duration < this.durationMin * 60) {continue;}
       }
 
       if(this.durationMax) {
-        if(marker.duration > this.durationMax * 60) {continue;}
+        if(ferrata.duration > this.durationMax * 60) {continue;}
       }
 
-      var latLng = new google.maps.LatLng(marker.lat, marker.lng);
+      var latLng = new google.maps.LatLng(ferrata.lat, ferrata.lng);
 
-      var googleMarker = new google.maps.Marker({
+      ferrata.marker = new google.maps.Marker({
         position: latLng,
-        title: marker.name + ' (' + marker.height + 'm)',
-        icon: config.baseURL + this.getIconForDifficulty(marker.difficulty)
+        title: ferrata.name + ' (' + ferrata.height + 'm)',
+        icon: config.baseURL + this.getIconForDifficulty(ferrata.difficulty)
       });
 
-      var googleInfoWindow = new google.maps.InfoWindow({
-        pixelOffset: {width: 0, height: -40},
-        content: "<div class='ferrata'>" +
-          "<h4>" + marker.name + "</h4>"+
-          "<dl class='dl-horizontal'>" +
-          "<dt>State</dt><dd>" + marker.state + "</dd>" +
-          "<dt>Region</dt><dd>" + marker.region + "</dd>" +
-          "<dt>Locality</dt><dd>" + marker.locality + "</dd>" +
-          "<dt>Coords</dt><dd>" + marker.lat + " " + marker.lng + "</dd>" +
-          "<dt>Begin</dt><dd>" + marker.begin + "</dd>" +
-          "<dt>Target</dt><dd>" + marker.height + "m</dd>" +
-          "<dt>Duration</dt><dd>" + durationInHours + "h</dd>" +
-          "<dt>Difficulty</dt><dd>("+marker.difficulty+")</dd>" +
-          "<dt>Link</dt><dd><a target='_blank' href='http://klettersteig.de/klettersteig/"+ marker.link +"'>klettersteig.de</a></dd>" +
-          "</dl>" +
-          "</div>"
-      });
+      google.maps.event.addListener(ferrata.marker, 'click', makeHandler(latLng, clusterer.getMap(), ferrata, this));
 
-      google.maps.event.addListener(googleMarker, 'click', makeHandler(latLng, googleInfoWindow, clusterer.getMap(), marker.slug, this));
-
-      if(marker.active) {
-        makeHandler(latLng, googleInfoWindow, clusterer.getMap())();
+      if(ferrata.active) {
+        makeHandler(latLng, clusterer.getMap(), ferrata)();
       }
 
-      newMarkers.push(googleMarker);
+      newMarkers.push(ferrata.marker);
     }
 
     clusterer.clearMarkers();
