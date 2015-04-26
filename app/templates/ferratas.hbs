@@ -1,13 +1,13 @@
 {{clustered-google-map lat=centerLat
-lng=centerLng
-zoom=zoom
-heightMin=heightMin
-heightMax=heightMax
-durationMin=durationMin
-durationMax=durationMax
-currentDifficulties=currentDifficulties
-gopt_panControl=false
-ferratas=model}}
+                       lng=centerLng
+                       zoom=zoom
+                       heightMin=heightMin
+                       heightMax=heightMax
+                       durationMin=durationMin
+                       durationMax=durationMax
+                       currentDifficulties=currentDifficulties
+                       gopt_panControl=false
+                       ferratas=model}}
 <div class="search">
   <input id="search-input" class="search__input" type="text" placeholder="Search Box">
 </div>
@@ -22,10 +22,10 @@ ferratas=model}}
         {{/each}}
       </div>
       <div class="filter__group">
-        {{range-slider max=startHeightMax start=startHeight range=heightRange change="changedHeight"}}
+        {{range-slider kind='height' max=startHeightMax start=startHeight range=heightRange change="changedHeight"}}
       </div>
       <div class="filter__group">
-        {{range-slider max=startDurationMax start=startDuration range=durationRange change="changedDuration"}}
+        {{range-slider kind='duration' max=startDurationMax start=startDuration range=durationRange change="changedDuration"}}
       </div>
     </form>
   </div>
