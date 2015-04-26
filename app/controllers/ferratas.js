@@ -2,7 +2,10 @@ import config from '../config/environment';
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+  needs: ['application'],
   zoom: 8,
+  centerLat: Ember.computed.alias('controllers.application.centerLat'),
+  centerLng: Ember.computed.alias('controllers.application.centerLng'),
   startHeight: [config.APP.heightRange.min, config.APP.heightRange.max],
   startDuration: [config.APP.durationRange.min, config.APP.durationRange.max],
   startHeightMax: config.APP.heightRange.max,
