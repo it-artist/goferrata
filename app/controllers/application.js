@@ -2,12 +2,12 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 export default Ember.Controller.extend({
-  startHeight: [config.APP.heightSlider.min, config.APP.heightSlider.max],
-  startDuration: [config.APP.durationSlider.min, config.APP.durationSlider.max],
-  startHeightMax: config.APP.heightSlider.max,
-  startDurationMax: config.APP.durationSlider.max,
-  heightRange: config.APP.heightSlider,
-  durationRange: config.APP.durationSlider,
+  startHeight: [config.APP.heightRange.min, config.APP.heightRange.max],
+  startDuration: [config.APP.durationRange.min, config.APP.durationRange.max],
+  startHeightMax: config.APP.heightRange.max,
+  startDurationMax: config.APP.durationRange.max,
+  heightRange: config.APP.heightRange,
+  durationRange: config.APP.durationRange,
   needs: ['ferratas'],
   heightMin: null,
   heightMax: null,
