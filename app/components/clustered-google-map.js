@@ -67,7 +67,6 @@ export default GoogleMapComponent.extend({
 
     for (index = 0; index < this.ferratas.length; ++index) {
       var ferrata = this.ferratas[index];
-      // var durationInHours = parseInt((marker["duration"] / 60)).toString() + ':' + parseInt((marker["duration"] % 60)).toString();
 
       // filter difficulty
       if(this.currentDifficulties.length > 0) {
