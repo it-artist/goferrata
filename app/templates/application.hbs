@@ -47,10 +47,10 @@
           {{/each}}
         </div>
         <div class="filter__group">
-          {{range-slider max=startHeightMax start=startHeight range=heightRange change="changedHeight"}}
+          {{range-slider max=startHeightMax start=startHeight range=heightRange change="changedHeight" kind="height"}}
         </div>
         <div class="filter__group">
-          {{range-slider max=startDurationMax start=startDuration range=durationRange change="changedDuration"}}
+          {{range-slider max=startDurationMax start=startDuration range=durationRange change="changedDuration" kind="duration"}}
         </div>
       </form>
     </div>
