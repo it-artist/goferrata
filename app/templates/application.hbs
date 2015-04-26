@@ -18,25 +18,28 @@
   <div class="search">
     <input id="search-input" class="search__input" type="text" placeholder="Search Box">
   </div>
-</div>
 
-<footer class="footer">
-  <div class="footer__container">
-    <form class="footer__form">
-      <div class="footer__group footer__group--wide">
-        <div class="footer__difficulties">
+  <div class="sidebar">
+    <div class="filter">
+      <form class="filter__form">
+        <div class="filter__group filter__difficulties">
           {{#each name in difficulties}}
             {{#difficulty-button targetDifficulty=name currentDifficulties=currentDifficulties}}{{name}}{{/difficulty-button}}
           {{/each}}
         </div>
-      </div>
-      <div class="footer__group">
-        {{range-slider max=8000 start=startHeight connect=true change="changedHeight"}}
-      </div>
-      <div class="footer__group">
-        {{range-slider max=1000 start=startDuration change="changedDuration"}}
-      </div>
+        <div class="filter__group">
+          {{range-slider max=startHeightMax start=startHeight range=heightRange change="changedHeight"}}
+        </div>
+        <div class="filter__group">
+          {{range-slider max=startDurationMax start=startDuration range=durationRange change="changedDuration"}}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
-    </form>
+<footer class="footer">
+  <div class="footer__container">
+    Proudly brought to you by Waube
   </div>
 </footer>
