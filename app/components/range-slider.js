@@ -7,7 +7,7 @@ export default RangeSlider.extend({
 
   didInsertElement: function() {
     this._super();
-    let pips_settings = { mode: 'range' }
+    let pips_settings = { mode: 'range' };
 
     if (this.kind === "height") {
       pips_settings.format = {
