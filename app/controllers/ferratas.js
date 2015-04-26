@@ -34,12 +34,6 @@ export default Ember.ArrayController.extend({
         durationMax: values[1]
       });
     },
-    centerMap: function(lat, lon) {
-      this.setProperties({
-        centerLat: lat,
-        centerLng: lon
-      });
-    },
     triggerDifficulty: function(targetDifficulty) {
       var difficulty = this.get('currentDifficulties');
 
