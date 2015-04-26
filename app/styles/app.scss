@@ -77,7 +77,7 @@ body {
 }
 
 .sidebar {
-  width: 420px;
+  width: 432px;
   position: fixed;
   top: 50px;
   right: -10px;
@@ -114,15 +114,17 @@ body {
   &__group {
     @extend .col-xs-12;
 
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+    padding-left: 30px;
+    padding-right: 50px;
   }
 
   &__difficulties {
     @extend .btn-group;
 
-    margin-bottom: 20px;
-    padding-left: 0;
-    padding-right: 0;
+    margin-bottom: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   &__difficulty-button {
@@ -131,7 +133,7 @@ body {
 
     font-weight: bold;
 
-    width: 36px;
+    width: 34px;
     padding-left: 0;
     padding-right: 0;
 
@@ -234,7 +236,7 @@ body {
 
   .noUi-value-horizontal {
     position: absolute;
-    margin-left: -15px;
+    margin-left: -8px;
     top: 5px;
   }
 
