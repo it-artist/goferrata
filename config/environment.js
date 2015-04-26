@@ -7,7 +7,7 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     googleMap: {
-      libraries: ['places', 'animation']
+      libraries: ['places']
     },
     contentSecurityPolicy: {
       'default-src': "*",
