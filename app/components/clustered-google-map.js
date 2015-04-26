@@ -3,25 +3,9 @@ import Ember from 'ember';
 import GoogleMapComponent from './google-map';
 import config from './../config/environment';
 
-var activeMarker = null;
-function makeHandler(latLng, map, ferrata, context) {
-  return function() {
-    map.panTo(latLng);
-
-    if(activeMarker) {
-      activeMarker.setAnimation(null);
-    }
-
-    ferrata.marker.setAnimation(google.maps.Animation.BOUNCE);
-    activeMarker = ferrata.marker;
-    if(context) {
-      context.sendAction('action', ferrata);
-    }
-  };
-}
-
 export default GoogleMapComponent.extend({
   action: 'windowOpened',
+  activeMarker: null,
   currentDifficulties: null,
   heightMin: null,
   heightMax: null,
@@ -56,7 +40,7 @@ export default GoogleMapComponent.extend({
       }
     });
 
-    var mcOptions = {gridSize: 50, maxZoom: 10, imagePath: config.baseURL + 'static/m'};
+    var mcOptions = {gridSize: 50, maxZoom: 10, imagePath: this.getImagePath('static/m')};
 
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
       var place = autocomplete.getPlace();
@@ -110,14 +94,14 @@ export default GoogleMapComponent.extend({
 
       ferrata.marker = new google.maps.Marker({
         position: latLng,
-        title: ferrata.name + ' (' + ferrata.height + 'm)',
-        icon: config.baseURL + this.getIconForDifficulty(ferrata.difficulty)
+        title: this.getMarkerTitle(ferrata),
+        icon: this.getImagePath(this.getIconForDifficulty(ferrata.difficulty))
       });
 
-      google.maps.event.addListener(ferrata.marker, 'click', makeHandler(latLng, clusterer.getMap(), ferrata, this));
+      google.maps.event.addListener(ferrata.marker, 'click', this.markerClickHandler(latLng, clusterer.getMap(), ferrata));
 
       if(ferrata.active) {
-        makeHandler(latLng, clusterer.getMap(), ferrata)();
+        this.markerClickHandler(latLng, clusterer.getMap(), ferrata)();
       }
 
       newMarkers.push(ferrata.marker);
@@ -126,6 +110,14 @@ export default GoogleMapComponent.extend({
     clusterer.clearMarkers();
     clusterer.addMarkers(newMarkers);
   }.observes('currentDifficulties.[]', 'heightMin', 'heightMax', 'durationMin', 'durationMax'),
+
+  getImagePath: function(path) {
+    return config.baseURL + path;
+  },
+
+  getMarkerTitle: function(ferrata) {
+    return ferrata.name + ' (' + ferrata.height + 'm)';
+  },
 
   getIconForDifficulty: function(difficulty) {
     if(['A', 'A/B'].contains(difficulty)) {
@@ -137,5 +129,21 @@ export default GoogleMapComponent.extend({
     } else {
       return 'pointer_black.png';
     }
+  },
+
+  markerClickHandler: function(latLng, map, ferrata) {
+    var self = this;
+    return function() {
+      map.panTo(latLng);
+
+      if(self.activeMarker) {
+        self.activeMarker.setAnimation(null);
+      }
+
+      ferrata.marker.setAnimation(google.maps.Animation.BOUNCE);
+      self.set('activeMarker', ferrata.marker);
+      self.sendAction('action', ferrata);
+    };
   }
+
 });
