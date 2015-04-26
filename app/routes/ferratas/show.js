@@ -2,20 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   slug: null,
-  model: function(params) {
-    this.set('slug', params.slug);
+  model: function(ferrata) {
+    this.set('slug', ferrata.slug);
 
-    return this.modelFor('ferratas');
+    var ferratas = this.modelFor('ferratas');
+    return ferratas.findBy('slug', this.get('slug'));
   },
-
   setupController: function(controller, model) {
-    var ferrata = model.findBy('slug', this.get('slug'));
+    if(model) {
+      model.active = true;
 
-    if(ferrata) {
-      model[model.indexOf(ferrata)]["active"] = true;
-
-      controller.set('centerLat', ferrata.lat);
-      controller.set('centerLng', ferrata.lng);
+      controller.set('model', model);
+      controller.set('centerLat', model.lat);
+      controller.set('centerLng', model.lng);
     } else {
       this.transitionTo('ferratas');
     }
