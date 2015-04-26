@@ -26,7 +26,19 @@ module.exports = function(environment) {
     },
 
     APP: {
-      difficulties: ["A", "A/B", "B", "B/C", "C", "C/D", "D", "D/E", "E", "E/F", "F"]
+      difficulties: ["A", "A/B", "B", "B/C", "C", "C/D", "D", "D/E", "E", "E/F", "F"],
+      heightSlider: {
+        'min': [     0 ],
+        '10%': [   500,  500 ],
+        '50%': [  4000, 1000 ],
+        'max': [ 9000 ]
+      },
+      durationSlider: {
+        'min': [     0 ],
+        '10%': [   50,  50 ],
+        '50%': [  500, 100 ],
+        'max': [ 1000 ]
+      }
     }
   };
 

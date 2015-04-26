@@ -2,7 +2,7 @@
 
 /* Variables
 -------------------------------------------------- */
-$footer-height: 60px;
+$footer-height: 20px;
 $border-color: rgba(189, 189, 189, 0.86);
 $hover-color: #009900;
 $pointer-green: #009900;
@@ -76,14 +76,18 @@ body {
   }
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: $footer-height;
-  background-color: #f5f5f5;
-  border-top: 1px solid $border-color;
-  text-align: center;
+.sidebar {
+  width: 420px;
+
+  position: fixed;
+  top: 50px;
+  right: -10px;
+}
+
+.filter {
+  @extend .clearfix;
+  padding: 10px;
+  background: rgba(248,248,248, 0.8);
 
   &__form {
     @extend .form-inline;
@@ -92,56 +96,64 @@ body {
   }
 
   &__group {
-    @extend .col-sm-3;
+    @extend .col-xs-12;
 
-    &--wide {
-      @extend .col-sm-6;
-    }
-
-  }
-
-  &__input {
-    @extend .form-control;
-
-    width: 60px!important;
+    margin-bottom: 50px;
   }
 
   &__difficulties {
     @extend .btn-group;
+
+    margin-bottom: 20px;
+    padding-left: 0;
+    padding-right: 0;
   }
+
+  &__difficulty-button {
+    @extend .btn;
+    @extend .btn-default;
+
+    font-weight: bold;
+
+    width: 36px;
+    padding-left: 0;
+    padding-right: 0;
+
+    &--active {
+      @extend .active;
+    }
+
+    &.green {
+      color: $pointer-green;
+    }
+
+    &.red {
+      color: $pointer-red;
+    }
+
+    &.black {
+      color: $pointer-black;
+    }
+
+    &.blue {
+      color: $pointer-blue;
+    }
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  background: rgba(248, 248, 248, 1);
+  border-top: 1px solid $border-color;
+  text-align: center;
 
   &__container {
     @extend .virtual__container;
   }
 
-}
-
-.difficulty-button {
-  @extend .btn;
-  @extend .btn-default;
-
-  padding: 6px 10px;
-  font-weight: bold;
-
-  &--active {
-    @extend .active;
-  }
-
-  &.green {
-    color: $pointer-green;
-  }
-
-  &.red {
-    color: $pointer-red;
-  }
-
-  &.black {
-    color: $pointer-black;
-  }
-
-  &.blue {
-    color: $pointer-blue;
-  }
 }
 
 .content {
@@ -202,6 +214,47 @@ body {
 
     dd {
       margin-left: 100px;
+    }
+  }
+}
+
+.noUi-pips {
+  position: relative;
+  top: 20px;
+
+  .noUi-marker-horizontal {
+    position:absolute;
+    top: -10px;
+    border-left: 1px solid black;
+    height: 8px;
+  }
+
+  .noUi-value-horizontal {
+    position: absolute;
+    margin-left: -15px;
+    top: 5px;
+  }
+
+  .noUi-marker-large {
+    height: 15px;
+  }
+}
+
+/* Mobile version
+-------------------------------------------------- */
+
+@media (max-width: 780px) {
+
+  .sidebar {
+    width: 100%;
+
+    position: static;
+    margin-top: 50%;
+  }
+
+  .content {
+    &__map {
+      bottom: 50%;
     }
   }
 }
