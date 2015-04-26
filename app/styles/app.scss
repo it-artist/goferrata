@@ -254,14 +254,14 @@ body {
 
   .sidebar {
     width: 100%;
-
     position: static;
-    margin-top: 370px;
+    margin-top: 350px;
   }
 
   .content {
     &__map {
-      bottom: 300px;
+      bottom: none;
+      height: 300px;
     }
   }
 
