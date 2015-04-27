@@ -1,19 +1,40 @@
 <div class="ferrata">
   <h2>{{model.name}}</h2>
-  <div class="ferrata__column">
-    <div class="ferrata__header">
-      Height
-    </div>
-    <div class="ferrata__value">
-      {{model.elevationdiff}}m
-    </div>
+  <div class="ferrata__properties">
+    <table class="ferrata__table">
+      <tbody>
+        <tr>
+          <th>Time</th>
+          <td>{{format-duration model.duration}}h</td>
+          <th>Height</th>
+          <td>{{model.height}}m</td>
+        </tr>
+        <tr>
+          <th>State</th>
+          <td>{{model.state}}</td>
+          <th>Diff</th>
+          <td>{{model.elevationdiff}}m</td>
+        </tr>
+        <tr>
+          <th>Region</th>
+          <td>{{model.region}}</td>
+          <th>Lat</th>
+          <td>{{format-coordinates model.lat}}</td>
+        </tr>
+        <tr>
+          <th>Locality</th>
+          <td>{{model.locality}}</td>
+          <th>Lng</th>
+          <td>{{format-coordinates model.lng}}</td>
+        </tr>
+        <tr>
+          <th>From</th>
+          <td>{{model.begin}}</td>
+          <th>To</th>
+          <td>{{model.target}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="ferrata__column">
-    <div class="ferrata__header">
-      Duration
-    </div>
-    <div class="ferrata__value">
-      {{format-duration model.duration}}
-    </div>
-  </div>
+
 </div>

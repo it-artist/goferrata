@@ -87,15 +87,34 @@ body {
 
 .ferrata {
   @extend .clearfix;
-  padding: 10px;
+  padding: 15px 30px;
   background: rgba(248,248,248, 0.95);
 
-  &__column {
-    @extend .col-xs-6;
+  h2 {
+    font-size: 20px;
+    margin: 5px 0 15px 0;
   }
 
-  &__header {
-    font-weight: bold;
+  &__properties {
+    padding: 15px 0;
+    margin-right: 30px;
+    margin-right: 30px;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    margin-bottom: -15px;
+  }
+
+  &__table {
+    @extend .table;
+    @extend .table-condensed;
+
+    width: auto;
+    margin: 0px;
+
+    th, td {
+      border: none!important;
+    }
+
   }
 }
 
