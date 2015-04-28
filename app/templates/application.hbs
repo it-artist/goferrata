@@ -6,8 +6,10 @@
     </div>
 
     <div class="header__geolocate">
-      <i class="icon__my-location"></i>
-      {{#geolocate-button latitude=centerLat longitude=centerLng}}Geolocate{{/geolocate-button}}
+      {{#geolocate-button latitude=centerLat longitude=centerLng}}
+        <i class="icon__my-location"></i>
+        Geolocate
+      {{/geolocate-button}}
     </div>
   </div>
 </nav>
