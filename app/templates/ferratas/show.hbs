@@ -1,5 +1,7 @@
 <div class="ferrata">
-  <h2>{{model.name}}</h2>
+  <h2>
+    {{model.name}}
+  </h2>
   <div class="ferrata__properties">
     <table class="ferrata__table">
       <tbody>
@@ -33,8 +35,16 @@
           <th>To</th>
           <td>{{model.target}}</td>
         </tr>
+
+        <tr>
+          <th>Source</th>
+          <td><a href="http://klettersteig.de/klettersteig/{{model.link}}" target="_blank" title="Source at klettersteig.de">Klettersteig.de &raquo;</a></td>
+          <th></th>
+          <td></td>
+        </tr>
       </tbody>
     </table>
+
   </div>
 
 </div>
