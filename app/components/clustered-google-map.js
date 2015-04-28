@@ -123,7 +123,7 @@ export default GoogleMapComponent.extend({
       return 'pointer_green.png';
     } else if(['B', 'B/C'].contains(difficulty)) {
       return 'pointer_blue.png';
-    } else if(['C', 'C/D'].contains(difficulty)) {
+    } else if(['C', 'C/D', 'D'].contains(difficulty)) {
       return 'pointer_red.png';
     } else {
       return 'pointer_black.png';

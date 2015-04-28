@@ -23,7 +23,7 @@ export default Ember.Component.extend({
       return 'green';
     } else if(['B', 'B/C'].contains(difficulty)) {
       return 'blue';
-    } else if(['C', 'C/D'].contains(difficulty)) {
+    } else if(['C', 'C/D', 'D'].contains(difficulty)) {
       return 'red';
     } else {
       return 'black';
