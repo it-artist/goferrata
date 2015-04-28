@@ -229,12 +229,11 @@ body {
     margin-left: 12px;
     margin-top: 7px;
     padding: 0 11px 0 13px;
-    border: 1px solid transparent;
+    border: 1px solid $border-color;
     border-radius: 2px 0 0 2px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     outline: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     background-color: #fff;
     font-family: Roboto;
     font-size: 14px;
