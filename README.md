@@ -32,6 +32,12 @@ You will need the following things properly installed on your computer.
 
     $ bash publish.sh
 
+### API
+
+* api.goferrata.dev:3000 (development)
+* api.goferrata.com (production)
+* can be overriden for development enviroment in env variable API_HOST ( https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-a-linux-vps )
+
 ## Further Reading / Useful Links
 
 * [ember.js](http://emberjs.com/)
