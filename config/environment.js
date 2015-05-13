@@ -18,6 +18,7 @@ module.exports = function(environment) {
       'style-src': "*",
       'media-src': "*"
     },
+
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -44,6 +45,15 @@ module.exports = function(environment) {
         '68%': [ 600 ],
         '86%': [ 900 ],
         'max': [ 1200 ]
+      }
+    }
+  };
+
+  ENV['torii'] = {
+    providers: {
+      'facebook-oauth2': {
+        apiKey: '476328079209329',
+        redirectUri: 'http://goferrata.dev:4200'
       }
     }
   };
@@ -79,6 +89,9 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.googleAnalytics = { webPropertyId: 'UA-60379606-1' };
+    ENV.torii.providers['facebook-oauth2'].apiKey = '476312222544248';
+    ENV.torii.providers['facebook-oauth2'].redirectUri = 'http://goferrata.com';
+
     ENV.apiHost = 'api.goferrata.com'
     ENV.locationType = 'history';
   }

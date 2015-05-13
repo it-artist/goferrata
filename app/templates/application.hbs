@@ -6,6 +6,13 @@
     </div>
 
     <div class="header__geolocate">
+
+      {{#if session.isAuthenticated}}
+        Welcome logged in user! <button {{action 'invalidateSession'}}>Logout</button>
+      {{else}}
+        <button {{action 'facebookLogin'}}>Login with Facebook</button>
+      {{/if}}
+
       {{#geolocate-button latitude=centerLat longitude=centerLng}}
         <i class="icon__my-location"></i>
         Geolocate

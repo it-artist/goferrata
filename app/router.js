@@ -10,6 +10,8 @@ Router.map(function() {
   this.resource('ferratas', { path: '/' }, function() {
     this.route('show', { path: '/:slug' });
   });
+  this.route('logout');
+  this.route('login');
 });
 
 export default Router;

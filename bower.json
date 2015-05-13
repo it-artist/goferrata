@@ -17,6 +17,8 @@
     "nouislider": "~7.0.10"
   },
   "devDependencies": {
-    "ember-data": "1.0.0-beta.17"
+    "ember-data": "1.0.0-beta.17",
+    "nouislider": "~7.0.10",
+    "ember-simple-auth": "0.8.0-beta.2"
   }
 }
