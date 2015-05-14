@@ -5,6 +5,7 @@ export default Ember.Route.extend({
   model: function() {
     return Ember.$.ajax({url: `http:\/\/${config.apiHost}/points.json`,
                          ifModified: true,
+                         cache: true,
                          dataType: 'json',
                          crossDomain: true});
   }
