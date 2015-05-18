@@ -10,11 +10,11 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, model) {
     if(model) {
-      model.active = true;
+      model.set('active', true);
 
       controller.set('model', model);
-      controller.set('centerLat', model.lat);
-      controller.set('centerLng', model.lng);
+      controller.set('centerLat', model.get('lat'));
+      controller.set('centerLng', model.get('lng'));
     } else {
       this.transitionTo('ferratas');
     }

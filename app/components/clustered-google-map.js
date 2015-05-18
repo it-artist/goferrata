@@ -5,6 +5,7 @@ import config from './../config/environment';
 
 export default GoogleMapComponent.extend({
   action: 'openDetail',
+  ferratas: null,
   activeMarker: null,
   currentDifficulties: null,
   heightMin: null,
@@ -56,7 +57,6 @@ export default GoogleMapComponent.extend({
     });
 
     this.clusterer = new MarkerClusterer(map, [], mcOptions);
-
     this.initMarkers();
   }),
 
@@ -65,57 +65,59 @@ export default GoogleMapComponent.extend({
     var clusterer = this.clusterer;
     var index;
 
-    for (index = 0; index < this.ferratas.length; ++index) {
-      var ferrata = this.ferratas[index];
+    for (index = 0; index < this.ferratas.get('length'); ++index) {
+
+      var ferrata = this.ferratas.objectAt(index);
 
       // filter difficulty
       if(this.currentDifficulties.length > 0) {
-        if(!this.currentDifficulties.contains(ferrata.difficulty)) {continue;}
+        if(!this.currentDifficulties.contains(ferrata.get('difficulty'))) {continue;}
       }
 
       if(this.heightMin) {
-        if(ferrata.height < this.heightMin) {continue;}
+        if(ferrata.get('height') < this.heightMin) {continue;}
       }
 
       if(this.heightMax) {
-        if(ferrata.height > this.heightMax) {continue;}
+        if(ferrata.get('height') > this.heightMax) {continue;}
       }
 
       if(this.durationMin) {
-        if(ferrata.duration < this.durationMin * 60) {continue;}
+        if(ferrata.get('duration') < this.durationMin * 60) {continue;}
       }
 
       if(this.durationMax) {
-        if(ferrata.duration > this.durationMax * 60) {continue;}
+        if(ferrata.get('duration') > this.durationMax * 60) {continue;}
       }
 
-      var latLng = new google.maps.LatLng(ferrata.lat, ferrata.lng);
+      var latLng = new google.maps.LatLng(ferrata.get('lat'), ferrata.get('lng'));
 
-      ferrata.marker = new google.maps.Marker({
+      var marker = new google.maps.Marker({
         position: latLng,
         title: this.getMarkerTitle(ferrata),
-        icon: this.getImagePath(this.getIconForDifficulty(ferrata.difficulty))
+        icon: this.getImagePath(this.getIconForDifficulty(ferrata.get('difficulty')))
       });
+      ferrata.set('marker', marker);
 
-      google.maps.event.addListener(ferrata.marker, 'click', this.markerClickHandler(latLng, clusterer.getMap(), ferrata));
+      google.maps.event.addListener(ferrata.get('marker'), 'click', this.markerClickHandler(latLng, clusterer.getMap(), ferrata));
 
-      if(ferrata.active) {
+      if(ferrata.get('active')) {
         this.markerClickHandler(latLng, clusterer.getMap(), ferrata)();
       }
 
-      newMarkers.push(ferrata.marker);
+      newMarkers.push(ferrata.get('marker'));
     }
 
     clusterer.clearMarkers();
     clusterer.addMarkers(newMarkers);
-  }.observes('currentDifficulties.[]', 'heightMin', 'heightMax', 'durationMin', 'durationMax'),
+  }.observes('currentDifficulties.[]', 'heightMin', 'heightMax', 'durationMin', 'durationMax', 'ferratas.@each'),
 
   getImagePath: function(path) {
     return config.baseURL + path;
   },
 
   getMarkerTitle: function(ferrata) {
-    return ferrata.name + ' (' + ferrata.height + 'm)';
+    return ferrata.get('name') + ' (' + ferrata.get('height') + 'm)';
   },
 
   getIconForDifficulty: function(difficulty) {
@@ -154,7 +156,7 @@ export default GoogleMapComponent.extend({
     return function() {
       map.panTo(latLng);
 
-      self.set('activeMarker', ferrata.marker);
+      self.set('activeMarker', ferrata.get('marker'));
       self.sendAction('action', ferrata);
     };
   }
