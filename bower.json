@@ -2,7 +2,7 @@
   "name": "go-ferrata",
   "dependencies": {
     "jquery": "^1.11.1",
-    "ember": "^1.11.0",
+    "ember": "1.11.3",
     "ember-resolver": "~0.1.11",
     "loader.js": "ember-cli/loader.js#1.0.1",
     "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",
@@ -15,5 +15,8 @@
     "ember-addons.bs_for_ember": "~0.7.0",
     "bootstrap-sass-official": "~3.3.3",
     "nouislider": "~7.0.10"
+  },
+  "devDependencies": {
+    "ember-data": "1.0.0-beta.17"
   }
 }
