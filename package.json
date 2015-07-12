@@ -35,7 +35,8 @@
     "ember-export-application-global": "^1.0.2",
     "ember-google-map": "^0.0.20",
     "express": "^4.8.5",
-    "glob": "4.4.0"
+    "glob": "4.4.0",
+    "torii": "^0.5.1"
   },
   "dependencies": {
     "broccoli-sass": "^0.4.0"

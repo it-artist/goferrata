@@ -83,5 +83,19 @@ module.exports = function(environment) {
     ENV.locationType = 'history';
   }
 
+  // TORII STUFF
+  if (environment === 'development') {
+    ENV.torii = {
+      sessionServiceName: 'session',
+      providers: {
+        'facebook-oauth2': {
+          apiKey: '476328079209329',
+          redirectUri: 'http://goferrata.dev:4200/'
+        }
+      }
+    };
+  }
+  // END OF TORII STUFF
+
   return ENV;
 };

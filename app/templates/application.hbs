@@ -5,6 +5,19 @@
       {{#link-to 'ferratas.index'}}<img src="logo.png" title="GoFerrata.com" />{{/link-to}}
     </div>
 
+    {{#if session.currentUser}}
+      Welcome {{session.currentUser.first_name}}
+    {{else}}
+      {{#if session.isWorking}}
+        One sec while we get you signed in...
+      {{else}}
+        {{error}}
+        <button {{action 'signInViaFacebook'}}>
+          Login via FB
+        </button>
+      {{/if}}
+    {{/if}}
+
     <div class="header__geolocate">
       {{#geolocate-button latitude=centerLat longitude=centerLng}}
         <i class="icon__my-location"></i>
