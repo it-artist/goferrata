@@ -8,7 +8,7 @@
     <div class="header__geolocate">
 
       {{#if session.isAuthenticated}}
-        Welcome logged in user! <button {{action 'invalidateSession'}}>Logout</button>
+        Welcome! <button {{action 'invalidateSession'}}>Logout</button>
       {{else}}
         <button {{action 'facebookLogin'}}>Login with Facebook</button>
       {{/if}}

@@ -2,6 +2,7 @@ import config from '../config/environment';
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+
   needs: ['application'],
   zoom: 8,
   activeMarker: null,

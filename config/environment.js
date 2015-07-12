@@ -53,10 +53,14 @@ module.exports = function(environment) {
     providers: {
       'facebook-oauth2': {
         apiKey: '476328079209329',
-        redirectUri: 'http://goferrata.dev:4200'
+        redirectUri: 'http://goferrata.dev:4200/'
       }
     }
   };
+
+  ENV['simple-auth'] = {
+    routeAfterAuthentication: 'ferratas'
+  }
 
   if (environment === 'development') {
     ENV.googleAnalytics = { webPropertyId: 'UA-60379606-1' };
