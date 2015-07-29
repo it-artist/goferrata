@@ -329,7 +329,12 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon__my-location:before {
+.icon__heart:before {
+  content: "\e602";
+}
+.icon__log-out:before {
   content: "\e600";
 }
-
+.icon__my-location:before {
+  content: "\e601";
+}
