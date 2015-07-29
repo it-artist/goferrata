@@ -5,18 +5,18 @@
       {{#link-to 'ferratas.index'}}<img src="logo.png" title="GoFerrata.com" />{{/link-to}}
     </div>
 
-    {{#if session.currentUser}}
-      Welcome {{session.currentUser.first_name}}
-    {{else}}
-      {{#if session.isWorking}}
-        One sec while we get you signed in...
+    <div class="header__user">
+      {{#if session.currentUser}}
+        Welcome {{session.currentUser.first_name}}!
       {{else}}
-        {{error}}
-        <button {{action 'signInViaFacebook'}}>
-          Login via FB
-        </button>
+        {{#unless session.isWorking}}
+          {{error}}
+          <button {{action 'signInViaFacebook'}}>
+            Login with Facebook
+          </button>
+        {{/unless}}
       {{/if}}
-    {{/if}}
+    </div>
 
     <div class="header__geolocate">
       {{#geolocate-button latitude=centerLat longitude=centerLng}}
