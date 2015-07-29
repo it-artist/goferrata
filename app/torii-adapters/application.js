@@ -16,6 +16,10 @@ export default Ember.Object.extend({
     });
   },
 
+  close: function() {
+    localStorage.removeItem("token");
+  },
+
   _fetchSession: function(tokenData) {
     let self = this;
 
@@ -36,8 +40,7 @@ export default Ember.Object.extend({
           }
         });
       } else {
-        console.log("no data for login man");
-        Ember.run.bind(null, resolve({}));
+        Ember.run.bind(null, reject());
       }
     });
   }

@@ -10,11 +10,14 @@ export default Ember.Route.extend({
       var route = this;
 
       this.get('session').open('facebook-oauth2').then(function(){
-        alert('success!');
       }, function(error) {
         console.log(error.message);
         route.controller.set('error', 'Could not sign you in: ' + error.message);
       });
+    },
+
+    logout: function() {
+      this.get('session').close();
     }
   }
 });

@@ -8,6 +8,10 @@
     <div class="header__user">
       {{#if session.currentUser}}
         Welcome {{session.currentUser.first_name}}!
+
+        <button {{action 'logout'}}>
+          <i class="icon__log-out"></i>
+        </button>
       {{else}}
         {{#unless session.isWorking}}
           {{error}}
