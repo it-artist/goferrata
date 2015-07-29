@@ -9,8 +9,10 @@ export default Ember.Object.extend({
   },
 
   fetch: function() {
+    let token = localStorage.getItem("token")
+
     return this._fetchSession({
-      "token": localStorage.getItem("token")
+      "token": token
     });
   },
 
@@ -18,23 +20,25 @@ export default Ember.Object.extend({
     let self = this;
 
     return new Ember.RSVP.Promise(function(resolve, reject){
-      Ember.$.ajax({
-        url: `http:\/\/${ config.apiHost }/users/login.json`,
-        type: "POST",
-        data: tokenData,
-        dataType: "json",
-        success: function(data) {
-          localStorage.setItem("token", data.user.token);
-          console.log(data);
-          var currentUser = Ember.Object.create(data.user);
-          //var currentUser = self.store.createRecord("user", data);
-          console.log(currentUser);
-          Ember.run.bind(null, resolve({ "currentUser": currentUser }));
-        },
-        error: function(jqXHR, textStatus, errorThrown){
-          Ember.run.bind(null, reject({ "message": errorThrown }));
-        }
-      });
+      if (Ember.isPresent(tokenData["token"]) || Ember.isPresent(tokenData["authorization_code"])) {
+        Ember.$.ajax({
+          url: `http:\/\/${ config.apiHost }/users/login.json`,
+          type: "POST",
+          data: tokenData,
+          dataType: "json",
+          success: function(data) {
+            localStorage.setItem("token", data.user.token);
+            var currentUser = Ember.Object.create(data.user);
+            Ember.run.bind(null, resolve({ "currentUser": currentUser }));
+          },
+          error: function(jqXHR, textStatus, errorThrown){
+            Ember.run.bind(null, reject({ "message": errorThrown }));
+          }
+        });
+      } else {
+        console.log("no data for login man");
+        Ember.run.bind(null, resolve({}));
+      }
     });
   }
 });
