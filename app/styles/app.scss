@@ -59,8 +59,22 @@ body {
   &__user {
     @extend .pull-right;
 
-    margin-top: 16px;
+    margin-top: 15px;
     margin-right: 15px;
+
+    span {
+      font-weight: bold;
+      cursor: pointer;
+
+      &:hover {
+        background: none;
+        color: $hover-color;
+      }
+    }
+
+    &__logout {
+      margin-left: 30px;
+    }
   }
 
   &__geolocate {

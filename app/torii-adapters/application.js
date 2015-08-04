@@ -31,8 +31,14 @@ export default Ember.Object.extend({
           data: tokenData,
           dataType: "json",
           success: function(data) {
+            // Persist token in browser
             localStorage.setItem("token", data.user.token);
-            var currentUser = Ember.Object.create(data.user);
+            // Set token to be used for ajax calls
+            Ember.$.ajaxPrefilter(function(options, originalOptions, xhr) {
+                return xhr.setRequestHeader('Token', data.user.token);
+            });
+            // Prepare user object to be merged into torii's session object
+            var currentUser = self.store.createRecord("user", data.user);
             Ember.run.bind(null, resolve({ "currentUser": currentUser }));
           },
           error: function(jqXHR, textStatus, errorThrown){

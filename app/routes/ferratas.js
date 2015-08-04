@@ -17,7 +17,16 @@ export default Ember.Route.extend({
     },
 
     logout: function() {
-      this.get('session').close();
+      let self = this;
+      let currentUser = self.get('session').get('currentUser');
+
+      // Before session will be closed, we need to delete user from store
+      // so the same user could be added again after login (no duplicate id)
+      self.store.find("user", currentUser.get('id')).
+          then(function(user) {
+            user.deleteRecord();
+            self.get('session').close();
+          });
     }
   }
 });
