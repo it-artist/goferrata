@@ -35,7 +35,7 @@ export default Ember.Object.extend({
             localStorage.setItem("token", data.user.token);
             // Set token to be used for ajax calls
             Ember.$.ajaxPrefilter(function(options, originalOptions, xhr) {
-                return xhr.setRequestHeader('Token', data.user.token);
+                return xhr.setRequestHeader('AUTHORIZATION', "Token token=" + data.user.token);
             });
             // Prepare user object to be merged into torii's session object
             var currentUser = self.store.createRecord("user", data.user);

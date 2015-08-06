@@ -7,7 +7,7 @@
 
     <div class="header__user">
       {{#if session.currentUser}}
-        Logged as {{session.currentUser.first_name}} {{session.currentUser.last_name}}
+        Logged as {{session.currentUser.name}}
 
         <span {{action 'logout'}} class="header__user__logout">
           <i class="icon__log-out"></i>

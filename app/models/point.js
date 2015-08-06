@@ -13,5 +13,6 @@ export default DS.Model.extend({
   elevationdiff: DS.attr("number"),
   height: DS.attr("number"),
   slug: DS.attr("string"),
-  difficulty: DS.attr("string")
+  difficulty: DS.attr("string"),
+  comments: DS.hasMany('comment')
 });

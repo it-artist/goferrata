@@ -2,6 +2,19 @@
   <h2>
     {{model.name}} [{{model.difficulty}}]
   </h2>
+  <div class="comments">
+    {{textarea  class='new-comment'
+                placeholder='What you think about this ferrata?'
+                value=newComment
+                enter='createComment'}}
+
+    {{#each model.comments key="id" as |comment|}}
+      <div class="comments__entry">{{comment.text}} <span class="comments__meta">{{comment.user_name}} at {{comment.formattedDate}}</span></div>
+    {{else}}
+      Be the first to comment this ferrata!
+    {{/each}}
+  </div>
+
   <div class="ferrata__properties">
     <table class="ferrata__table">
       <tbody>
