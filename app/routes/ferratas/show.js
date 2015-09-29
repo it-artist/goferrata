@@ -13,6 +13,7 @@ export default Ember.Route.extend({
       model.set('active', true);
 
       controller.set('model', model);
+      controller.set('zoom', 12);
       controller.set('centerLat', model.get('lat'));
       controller.set('centerLng', model.get('lng'));
     } else {

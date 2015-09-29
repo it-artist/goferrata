@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
   needs: ['application'],
-  zoom: 8,
+  zoom: Ember.computed.alias('controllers.application.zoom'),
   activeMarker: null,
   centerLat: Ember.computed.alias('controllers.application.centerLat'),
   centerLng: Ember.computed.alias('controllers.application.centerLng'),
